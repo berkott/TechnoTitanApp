@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    ons.ready(function() {
+      console.log("Onsen UI is ready!");
+    });
+
+    window.fn = {};
+    window.fn.open = function() {
+      var menu = document.getElementById('menu');
+      menu.open();
+    };
+    window.fn.load = function(page) {
+      var content = document.getElementById('content');
+      var menu = document.getElementById('menu');
+      content
+        .load(page)
+        .then(menu.close.bind(menu));
+    };
+
+    // Below added by Berkan
+
+    document.addEventListener('init', function(event) {
+      var page = event.target;
+
+      if (page.id === 'competition') {
+        page.querySelector('#checklistBtn').onclick = function() {
+          document.querySelector('#myNavigator').pushPage('checklist.html', {
+            data: {
+              title: 'Checklist'
+            }
+          });
+        };
+        page.querySelector('#safteyBtn').onclick = function() {
+          document.querySelector('#myNavigator').pushPage('saftey.html', {
+            data: {
+              title: 'Saftey'
+            }
+          });
+        };
+        page.querySelector('#pitSafteyBtn').onclick = function() {
+          document.querySelector('#myNavigator').pushPage('pitSaftey.html', {
+            data: {
+              title: 'Pit Saftey'
+            }
+          });
+        };
+        page.querySelector('#safteyTestBtn').onclick = function() {
+          document.querySelector('#myNavigator').pushPage('safteyTest.html', {
+            data: {
+              title: 'Saftey Test'
+            }
+          });
+        };
+      } else if (page.id === 'checklist' || page.id === 'saftey' || page.id === 'pitSaftey' || page.id === 'safteyTest') {
+        page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <ons-splitter>
+    <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+      <ons-page>
+        <ons-list>
+          <ons-list-item onclick="fn.load('home.html')" tappable>
+            Home
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('goToComp.html')" tappable>
+            Competition
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('programming.html')" tappable>
+            Programming
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('mechanical.html')" tappable>
+            Mechanical
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('electrical.html')" tappable>
+            Electrical
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('business.html')" tappable>
+            Business
+          </ons-list-item>
+          <ons-list-item onclick="fn.load('about.html')" tappable>
+            About
+          </ons-list-item>
+        </ons-list>
+      </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+  </ons-splitter>
+
+  <ons-template id="home.html">
+    <ons-page>
+      <!-- <ons-navigator swipeable id="myNavigator" page="competition.html"></ons-navigator> -->
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Home
+        </div>
+      </ons-toolbar>
+      <h2 style="text-align:center;">
+        Welcome
+      </h2>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Navigate to a page for tutorials and information for each category
+      </p>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="goToComp.html">
+    <ons-page>
+      <ons-navigator swipeable id="myNavigator" page="competition.html"></ons-navigator>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="competition.html">
+    <ons-page id="competition">
+      <!-- <ons-navigator swipeable id="myNavigator" page="competition.html"></ons-navigator> -->
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Competition
+        </div>
+      </ons-toolbar>
+      <ons-list>
+        <ons-list-header>Select a part of the comeptition</ons-list-header>
+        <ons-list-item tappable id="checklistBtn">Checklist</ons-list-item>
+        <ons-list-item tappable id="safteyBtn">Saftey</ons-list-item>
+        <ons-list-item tappable id="pitSafteyBtn">Pit Saftey</ons-list-item>
+        <ons-list-item tappable id="safteyTestBtn">Saftey Test</ons-list-item>
+      </ons-list>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="checklist.html">
+    <ons-page id="checklist">
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">
+          Checklist
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Checklist
+      </p>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="saftey.html">
+    <ons-page id="saftey">
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">
+          Saftey
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Saftey
+      </p>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="pitSaftey.html">
+    <ons-page id="pitSaftey">
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">
+          Pit Saftey
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Pit Saftey
+      </p>
+      <embed src="pages/Pit Saftey Rules.pdf" type="application/pdf" width="100%" height="600px" />
+      <!-- <object width=100% data="pages/Pit Saftey Rules.pdf"></object> -->
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="safteyTest.html">
+    <ons-page id="safteyTest">
+      <ons-toolbar>
+        <div class="left">
+          <ons-back-button>Back</ons-back-button>
+        </div>
+        <div class="center">
+          Saftey Test
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Saftey Test
+      </p>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="programming.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Programming
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Coming Soon!
+      </p>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="mechanical.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Mechanical
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Coming Soon!
+      </p>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="electrical.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Electrical
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Coming Soon!
+      </p>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="business.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          Business
+        </div>
+      </ons-toolbar>
+      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+        Coming Soon!
+      </p>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="about.html">
+    <ons-page>
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="fn.open()">
+            <ons-icon icon="ion-navicon, material:md-menu"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">
+          About
+        </div>
+      </ons-toolbar>
+      <h2 style="text-align:center;">
+      Techno Titans Team 1683
+    </h2>
+      <img style="padding-left: 5%; width: 90%;" src="images/chairmas.jpg">
+      <p style="text-align: left; opacity: 0.8; padding-top: 10px; padding-right: 5px; padding-left: 5px;">
+        The Northview Techno Titans (1683) is a robotics team from Northview High School in Johns Creek, Georgia. We are a non-profit organization that strives for success and growth. The Techno Titans’ mission is to improve our members by strengthening their
+        skills and knowledge about engineering, science, and math. We strive to prepare our members for jobs in STEM fields so that we can change the world for the better. We try to achieve this by getting students interested in science, technology, engineering,
+        and math and by getting them to experience a team environment. The Techno Titans is the equivalent of any high school varsity sports team – except with coders instead of linebackers, engineers instead of quarterbacks, and industry leaders instead
+        of coaches. Every year, the students of the Techno Titans with the help of mentors build a robot for VEX and BEST as well as a robot for FIRST that in years past has been able to climb jungle gyms, repair space stations, build computer chips,
+        shoot Frisbees, play soccer, play basketball, and much more. We also have the ability to connect with our community as we give demonstrations and give mentorships for the future generations. Overall we are a team that encourage all different age
+        groups with the hopes that we are guiding the innovators of the future.
+      </p>
+    </ons-page>
+  </ons-template>
+
+</body>
+
+</html>
