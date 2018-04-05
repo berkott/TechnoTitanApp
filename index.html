@@ -44,28 +44,28 @@
             }
           });
         };
-        page.querySelector('#safteyBtn').onclick = function() {
-          document.querySelector('#myNavigator').pushPage('saftey.html', {
+        page.querySelector('#safetyBtn').onclick = function() {
+          document.querySelector('#myNavigator').pushPage('safety.html', {
             data: {
-              title: 'Saftey'
+              title: 'Safety'
             }
           });
         };
-        page.querySelector('#pitSafteyBtn').onclick = function() {
-          document.querySelector('#myNavigator').pushPage('pitSaftey.html', {
+        page.querySelector('#pitsafetyBtn').onclick = function() {
+          document.querySelector('#myNavigator').pushPage('pitSafety.html', {
             data: {
-              title: 'Pit Saftey'
+              title: 'Pit Safety'
             }
           });
         };
-        page.querySelector('#safteyTestBtn').onclick = function() {
-          document.querySelector('#myNavigator').pushPage('safteyTest.html', {
+        page.querySelector('#safetyTestBtn').onclick = function() {
+          document.querySelector('#myNavigator').pushPage('safetyTest.html', {
             data: {
-              title: 'Saftey Test'
+              title: 'Safety Test'
             }
           });
         };
-      } else if (page.id === 'checklist' || page.id === 'saftey' || page.id === 'pitSaftey' || page.id === 'safteyTest') {
+      } else if (page.id === 'checklist' || page.id === 'safety' || page.id === 'pitsafety' || page.id === 'safetyTest') {
         page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
       }
     });
@@ -148,9 +148,9 @@
       <ons-list>
         <ons-list-header>Select a part of the comeptition</ons-list-header>
         <ons-list-item tappable id="checklistBtn">Checklist</ons-list-item>
-        <ons-list-item tappable id="safteyBtn">Saftey</ons-list-item>
-        <ons-list-item tappable id="pitSafteyBtn">Pit Saftey</ons-list-item>
-        <ons-list-item tappable id="safteyTestBtn">Saftey Test</ons-list-item>
+        <ons-list-item tappable id="safetyBtn">Safety</ons-list-item>
+        <ons-list-item tappable id="pitsafetyBtn">Pit Safety</ons-list-item>
+        <ons-list-item tappable id="safetyTestBtn">Safety Test</ons-list-item>
       </ons-list>
     </ons-page>
   </ons-template>
@@ -165,59 +165,49 @@
           Checklist
         </div>
       </ons-toolbar>
-      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-        Checklist
-      </p>
+      <object width="100%" height="100%" data="pages/RobotsChecklist.html"></object>
     </ons-page>
   </ons-template>
 
-  <ons-template id="saftey.html">
-    <ons-page id="saftey">
+  <ons-template id="safety.html">
+    <ons-page id="safety">
       <ons-toolbar>
         <div class="left">
           <ons-back-button>Back</ons-back-button>
         </div>
         <div class="center">
-          Saftey
+          Safety
         </div>
       </ons-toolbar>
-      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-        Saftey
-      </p>
+      <object width="100%" height="100%" data="pages/Safety2018.html"></object>
     </ons-page>
   </ons-template>
 
-  <ons-template id="pitSaftey.html">
-    <ons-page id="pitSaftey">
+  <ons-template id="pitSafety.html">
+    <ons-page id="pitSafety">
       <ons-toolbar>
         <div class="left">
           <ons-back-button>Back</ons-back-button>
         </div>
         <div class="center">
-          Pit Saftey
+          Pit Safety
         </div>
       </ons-toolbar>
-      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-        Pit Saftey
-      </p>
-      <embed src="pages/Pit Saftey Rules.pdf" type="application/pdf" width="100%" height="600px" />
-      <!-- <object width=100% data="pages/Pit Saftey Rules.pdf"></object> -->
+      <object width="100%" height="100%" data="pages/PitSafetyRules.html"></object>
     </ons-page>
   </ons-template>
 
-  <ons-template id="safteyTest.html">
-    <ons-page id="safteyTest">
+  <ons-template id="safetyTest.html">
+    <ons-page id="safetyTest">
       <ons-toolbar>
         <div class="left">
           <ons-back-button>Back</ons-back-button>
         </div>
         <div class="center">
-          Saftey Test
+          Safety Test
         </div>
       </ons-toolbar>
-      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-        Saftey Test
-      </p>
+      <object width="100%" height="100%" data="pages/TechnoTitansSafetyTest.html"></object>
     </ons-page>
   </ons-template>
 
