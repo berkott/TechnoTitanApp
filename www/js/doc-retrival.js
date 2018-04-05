@@ -15,3 +15,8 @@ var allDocs = [];
 var parseDocument = function () {
 
 }
+
+var getAllDocs = function() {
+
+}
+
