@@ -9,16 +9,6 @@ var config = {
     messagingSenderId: "229979215973"
 };
 
-const Section = Object.freeze({
-    PROGRAMMING: "programming",
-    MECHANICAL: "mechanical",
-    BUSINESS: "business",
-    SAFETY: "safety",
-    ELECTRICAL: "electrical",
-    COMPETITION: "competition",
-    GENERAL: "general"
-});
-
 firebase.initializeApp(config);
 var storage = firebase.storage();
 
