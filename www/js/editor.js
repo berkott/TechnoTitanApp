@@ -23,7 +23,7 @@ const Section = Object.freeze({
 var sanitize = function(input) {
     const sanitize = /(\s)/g;
     return input.replace(sanitize, "");
-}
+};
 
 var sendToFirebase = function (text, section, title) {
     /// TODO Fix firebase rules and add authentications !!!!!!!!!!
