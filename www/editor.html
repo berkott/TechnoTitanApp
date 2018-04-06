@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="js/doc-retrival.js"></script> <!--sets up firebase-->
-    <script src="http://unpkg.com/axios"></script> <!--sets up firebase-->
+    <script src="/TechnoTitanApp/node_modules/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -45,6 +45,23 @@
     <br/>
     <pre id="eg-previewer">
 	</pre>
+    <center>
+        <select>
+            <option value="Programming">Programming</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Business">Business</option>
+            <option value="Safety">Safety</option>
+            <option value="Electrical">Electrical</option>
+            <option value="Competition">Competition</option>
+            <option value="General">General</option>
+
+        </select>
+        <br/>
+        <br/>
+        <button id="submit" style="background-color: #222222; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;">
+            Publish
+        </button>
+    </center>
 </body>
 
 </html>

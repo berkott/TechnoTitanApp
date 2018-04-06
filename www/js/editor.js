@@ -20,7 +20,7 @@ const Section = Object.freeze({
  * @param title - title of the article
  */
 
-var sanitize = function(input) {
+var sanitize = function (input) {
     const sanitize = /(\s)/g;
     return input.replace(sanitize, "");
 };
@@ -45,30 +45,23 @@ var getArticleTitle = function () {
     return sanitize($("file-name").text())
 }
 
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
 
     $("#submit").onclick = function () {
         var articleText = getArticleText();
         var articleSection = Section[getSelectedSection()] || Section.GENERAL;
         var articleTitle = getArticleTitle();
-        sendToFirebase(articleText, articleSection, articleText); // TODO SHIV get section from selected btn dropdown menu in editor
+        sendToFirebase(articleText, articleSection, articleTitle); // TODO SHIV get section from selected btn dropdown menu in editor
     };
 
-    $('div#froala-editor')
-        .on('froalaEditor.contentChanged froalaEditor.initialized', function(e, editor) {
-            $('pre#eg-previewer').text(editor.codeBeautifier.run(editor.html.get()))
-        })
-        .froalaEditor();
+    // $('div#froala-editor')
+    //     .on('froalaEditor.contentChanged froalaEditor.initialized', function (e, editor) {
+    //         $('pre#eg-previewer').text(editor.codeBeautifier.run(editor.html.get()))
+    //     })
+    //     .froalaEditor();
 
-    $(function() {
-        $('div#froala-editor').froalaEditor()
-            .on('froalaEditor.contentChanged', function(e, editor) {
-                $('#preview').html(editor.html.get());
-            })
-    });
-
-    $(function() {
-        $.FroalaEditor.DefineIcon('my_dropdown', { NAME: 'cog' });
+    $(function () {
+        $.FroalaEditor.DefineIcon('my_dropdown', {NAME: 'check'});
         $.FroalaEditor.RegisterCommand('my_dropdown', {
             title: 'Advanced options',
             type: 'dropdown',
@@ -79,21 +72,58 @@ jQuery(document).ready(function($) {
                 'v1': 'Insert Checkbox',
                 'v2': 'Insert Blue Alliance Card'
             },
-            callback: function(cmd, val) {
+            callback: function (cmd, val) {
                 console.log(val);
             },
             // Callback on refresh.
-            refresh: function($btn) {
+            refresh: function ($btn) {
                 console.log('do refresh');
             },
             // Callback on dropdown show.
-            refreshOnShow: function($btn, $dropdown) {
+            refreshOnShow: function ($btn, $dropdown) {
                 console.log('do refresh when show');
             }
         });
-
-        $('div#froala-editor').froalaEditor({
-            toolbarButtons: ['bold', 'italic', 'formatBlock', 'my_dropdown']
+        $('div#froala-editor')
+            .on('froalaEditor.contentChanged froalaEditor.initialized', function (e, editor) {
+                $('pre#eg-previewer').text(editor.codeBeautifier.run(editor.html.get()))
+            }).froalaEditor({
+            toolbarButtons: ['fullscreen', 'bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'putdent', 'indent', 'quote', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', 'print', 'help', 'html', 'undo', 'redo', 'formatBlock', 'my_dropdown']
         })
+            .on('froalaEditor.contentChanged froalaEditor.initialized', function (e, editor) {
+                // $('#preview').html(editor.html.get());
+                $('pre#eg-previewer').text(editor.codeBeautifier.run(editor.html.get()))
+
+            })
     });
+
+//     $(function() {
+//         $.FroalaEditor.DefineIcon('my_dropdown', { NAME: 'check' });
+//         $.FroalaEditor.RegisterCommand('my_dropdown', {
+//             title: 'Advanced options',
+//             type: 'dropdown',
+//             focus: false,
+//             undo: false,
+//             refreshAfterCallback: true,
+//             options: {
+//                 'v1': 'Insert Checkbox',
+//                 'v2': 'Insert Blue Alliance Card'
+//             },
+//             callback: function(cmd, val) {
+//                 console.log(val);
+//             },
+//             // Callback on refresh.
+//             refresh: function($btn) {
+//                 console.log('do refresh');
+//             },
+//             // Callback on dropdown show.
+//             refreshOnShow: function($btn, $dropdown) {
+//                 console.log('do refresh when show');
+//             }
+//         });
+//
+//         $('div#froala-editor').froalaEditor({
+//             toolbarButtons: ['bold', 'italic', 'formatBlock', 'my_dropdown']
+//         })
+//     });
 });
